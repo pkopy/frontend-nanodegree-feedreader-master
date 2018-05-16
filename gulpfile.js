@@ -9,6 +9,12 @@ const uglify = require('gulp-uglify')
 gulp.task('default', ['copy-html', 'styles'], function(){
   gulp.watch('./src/sass/**/*.scss', ['styles']);
 	gulp.watch('./src/index.html',['copy-html']);
+	gulp.watch('./src/jasmine/spec/*.js', function(){
+		gulp.src('./src/jasmine/spec/*.js')
+				.pipe(gulp.dest('./dist/jasmine/spec'))
+				.pipe(browserSync.stream());
+
+	})
 
 	browserSync.init({
 		server: './dist'
