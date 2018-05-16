@@ -24,17 +24,17 @@ $(function () {
         it('are defined', function () {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
-            
+
         });
 
-        it('are url defined', function(){
+        it('are url defined', function () {
             for (let i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
             }
 
         });
-        it('are name defined', function(){
+        it('are name defined', function () {
             for (let i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
@@ -57,13 +57,13 @@ $(function () {
 
     describe('The menu', function () {
         const menu = document.querySelector('body');
-       
-    
-        it('menu is hidden', function(){
+
+
+        it('menu is hidden', function () {
             expect(menu.className).toMatch('menu-hidden');
         });
-        it('menu is changeable', function(){
-            
+        it('menu is changeable', function () {
+
             menu.className = '';
             expect(menu.className).toMatch('');
             menu.className = 'menu-hidden';
@@ -87,10 +87,23 @@ $(function () {
      * clicked and does it hide when clicked again.
      */
 
-    
-    describe('Initial Entries', function(){
-        
-    })
+
+    describe('Initial Entries', function () {
+        let container = $('.feed')
+        console.log(container)
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                done();
+            })
+        });
+
+        it('is least a single element', function (done) {
+            
+            expect(container[0].childNodes.length).not.toBe(0);
+            done();
+
+        })
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
 
     /* TODO: Write a test that ensures when the loadFeed
@@ -100,6 +113,28 @@ $(function () {
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
 
+let array=[];
+    describe('New Feed Selection', function () {
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                let container = $('.feed')
+                array.push(container)
+                done();
+            })
+        });
+
+        it('is content changes', function (done) {
+            
+            // loadFeed(1);
+            let container1 = $('.feed')
+            array.push(container1)
+            console.log(loadFeed(0))
+            // loadFeed(0);
+            expect(loadFeed(0)).not.toBe(loadFeed(1));
+            done();
+
+        })
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
 
     /* TODO: Write a test that ensures when a new feed is loaded
