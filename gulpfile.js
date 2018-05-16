@@ -2,8 +2,11 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify')
 
-gulp.task('default', ['copy-html', 'styles','copy-fonts', 'copy-jasmine'], function(){
+gulp.task('default', ['copy-html', 'styles'], function(){
   gulp.watch('./src/sass/**/*.scss', ['styles']);
 	gulp.watch('./src/index.html',['copy-html']);
 
@@ -43,3 +46,20 @@ gulp.task('copy-jasmine', function(){
       .pipe(gulp.dest('./dist/jasmine'));
       
 });
+
+gulp.task('scripts', function() {
+	gulp.src('./src/js/**/*.js')
+  
+		.pipe(babel())
+		.pipe(concat('app.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('dist', [
+  'copy-html',
+  'copy-fonts',
+  'copy-jasmine',
+	'styles',
+	'scripts'
+]);
