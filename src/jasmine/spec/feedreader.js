@@ -114,7 +114,6 @@ $(function () {
 
 
     describe('New Feed Selection', function () {
-        let array=[];
         let firstHeader;
         let secondHeader;
         beforeEach(function (done) {
