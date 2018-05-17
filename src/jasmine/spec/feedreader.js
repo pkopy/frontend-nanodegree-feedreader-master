@@ -117,8 +117,8 @@ let array=[];
     describe('New Feed Selection', function () {
         beforeEach(function (done) {
             loadFeed(0, function () {
-                let container = $('.feed')
-                array.push(container)
+                // let container = $('.feed')
+                // array.push(container)
                 done();
             })
         });
@@ -126,11 +126,13 @@ let array=[];
         it('is content changes', function (done) {
             
             // loadFeed(1);
-            let container1 = $('.feed')
-            array.push(container1)
-            console.log(loadFeed(0))
+            // let container1 = $('.feed')
+            // array.push(container1)
+            // console.log(loadFeed(0))
             // loadFeed(0);
-            expect(loadFeed(0)).not.toBe(loadFeed(1));
+            let bool = loadFeed(1);
+            console.log(bool)
+            expect(bool).not.toBe(false);
             done();
 
         })
