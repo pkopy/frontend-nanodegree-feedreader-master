@@ -90,7 +90,6 @@ $(function () {
 
     describe('Initial Entries', function () {
         let container = $('.feed')
-        console.log(container)
         beforeEach(function (done) {
             loadFeed(0, function () {
                 done();
@@ -113,28 +112,26 @@ $(function () {
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
 
-let array=[];
+
     describe('New Feed Selection', function () {
+        let array=[];
+        let a,b;
+        beforeEach(function (done) {
+            loadFeed(1, function () {
+                a = document.querySelector('.header-title').lastChild.data;
+                done();
+            })
+        });
         beforeEach(function (done) {
             loadFeed(0, function () {
-                // let container = $('.feed')
-                // array.push(container)
+                b = document.querySelector('.header-title').lastChild.data;
                 done();
             })
         });
 
         it('is content changes', function (done) {
-            
-            // loadFeed(1);
-            // let container1 = $('.feed')
-            // array.push(container1)
-            // console.log(loadFeed(0))
-            // loadFeed(0);
-            let bool = loadFeed(1);
-            console.log(bool)
-            expect(bool).not.toBe(false);
+            expect(a).not.toEqual(b);
             done();
-
         })
     });
     /* TODO: Write a new test suite named "New Feed Selection" */

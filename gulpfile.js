@@ -6,7 +6,7 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify')
 
-gulp.task('default', ['copy-html', 'styles'], function(){
+gulp.task('default', ['copy-html', 'styles', 'scripts'], function(){
   gulp.watch('./src/sass/**/*.scss', ['styles']);
 	gulp.watch('./src/index.html',['copy-html']);
 	gulp.watch('./src/jasmine/spec/*.js', function(){

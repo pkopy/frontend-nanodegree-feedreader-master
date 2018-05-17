@@ -33,6 +33,7 @@ var allFeeds = [
 function init() {
     // Load the first feed we've defined (index of 0).
     loadFeed(0);
+    
 }
 
 /* This function performs everything necessary to load a
@@ -46,6 +47,7 @@ function init() {
 function loadFeed(id, cb) {
     var feedUrl = allFeeds[id].url,
         feedName = allFeeds[id].name;
+        
 
     $.ajax({
         type: "POST",
@@ -68,8 +70,10 @@ function loadFeed(id, cb) {
              * entryTemplate (created above using Handlebars) and append
              * the resulting HTML to the list of entries on the page.
              */
+            
             entries.forEach(function (entry) {
                 container.append(entryTemplate(entry));
+                
             });
 
             if (cb) {
@@ -86,6 +90,7 @@ function loadFeed(id, cb) {
         },
         dataType: "json"
     });
+    
 }
 
 /* Google API: Loads the Feed Reader API and defines what function
@@ -116,7 +121,7 @@ $(function () {
         feedList.append(feedItemTemplate(feed));
 
         feedId++;
-        console.log(container)
+        
     });
 
     /* When a link in our feedLFist is clicked on, we want to hide
