@@ -4,3 +4,7 @@ In this project you are given a web-based application that reads RSS feeds. The 
 
 
 ## Install
+
+Clone this repository and type in terminal:
+
+$ npm install
