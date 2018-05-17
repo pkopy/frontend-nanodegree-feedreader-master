@@ -115,22 +115,23 @@ $(function () {
 
     describe('New Feed Selection', function () {
         let array=[];
-        let a,b;
+        let firstHeader;
+        let secondHeader;
         beforeEach(function (done) {
             loadFeed(1, function () {
-                a = document.querySelector('.header-title').lastChild.data;
+                firstHeader = document.querySelector('.header-title').lastChild.data;
                 done();
             })
         });
         beforeEach(function (done) {
             loadFeed(0, function () {
-                b = document.querySelector('.header-title').lastChild.data;
+                secondHeader = document.querySelector('.header-title').lastChild.data;
                 done();
             })
         });
 
         it('is content changes', function (done) {
-            expect(a).not.toEqual(b);
+            expect(firstHeader).not.toEqual(secondHeader);
             done();
         })
     });
