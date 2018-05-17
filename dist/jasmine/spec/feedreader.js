@@ -130,6 +130,8 @@ $(function () {
         });
 
         it('is content changes', function (done) {
+            expect(firstHeader).toBeDefined();
+            expect(secondHeader).toBeDefined();
             expect(firstHeader).not.toEqual(secondHeader);
             done();
         })
