@@ -130,8 +130,8 @@ let array=[];
             // array.push(container1)
             // console.log(loadFeed(0))
             // loadFeed(0);
-            let bool = loadFeed(1);
-            console.log(bool)
+            
+            
             expect(bool).not.toBe(false);
             done();
 
