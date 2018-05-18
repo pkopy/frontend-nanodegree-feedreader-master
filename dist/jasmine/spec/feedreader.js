@@ -35,18 +35,20 @@ $(() => {
     });
 
     describe('The menu', () => {
-        const menu = document.querySelector('body');
-
+        const menu = $('body');
+        const button = $('.menu-icon-link');
 
         it('menu is hidden', () => {
-            expect(menu.className).toMatch('menu-hidden');
+            expect(menu.hasClass('menu-hidden')).toBe(true); 
         });
+
         it('menu is changeable', () => {
 
-            menu.className = '';
-            expect(menu.className).toMatch('');
-            menu.className = 'menu-hidden';
-            expect(menu.className).toMatch('menu-hidden');
+            button.click();
+            expect(menu[0].className).not.toMatch('menu-hidden');
+            button.click();
+            expect(menu[0].className).toMatch('menu-hidden');
+            
         });
 
     });
