@@ -74,13 +74,13 @@ $(() => {
         let secondHeader;
         beforeEach((done) => {
             loadFeed(1, () => {
-                firstHeader = document.querySelector('.header-title').lastChild.data;
+                firstHeader = $('.header-title')[0].innerText;
                 done();
             })
         });
         beforeEach((done) => {
             loadFeed(0, () => {
-                secondHeader = document.querySelector('.header-title').lastChild.data;
+                secondHeader = $('.header-title')[0].innerText;
                 done();
             })
         });
